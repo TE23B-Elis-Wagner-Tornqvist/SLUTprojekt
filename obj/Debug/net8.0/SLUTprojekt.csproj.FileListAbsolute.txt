@@ -1,0 +1,14 @@
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.AssemblyInfoInputs.cache
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.AssemblyInfo.cs
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.csproj.CoreCompileInputs.cache
+C:\Programmering2\SLUTprojekt\bin\Debug\net8.0\SLUTprojekt.exe
+C:\Programmering2\SLUTprojekt\bin\Debug\net8.0\SLUTprojekt.deps.json
+C:\Programmering2\SLUTprojekt\bin\Debug\net8.0\SLUTprojekt.runtimeconfig.json
+C:\Programmering2\SLUTprojekt\bin\Debug\net8.0\SLUTprojekt.dll
+C:\Programmering2\SLUTprojekt\bin\Debug\net8.0\SLUTprojekt.pdb
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.dll
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\refint\SLUTprojekt.dll
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.pdb
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.genruntimeconfig.cache
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\ref\SLUTprojekt.dll
