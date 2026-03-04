@@ -1,4 +1,8 @@
-﻿Console.WriteLine("Welcome to a game about smithing weapons!");
+﻿Longsword longsword = new Longsword();
+
+
+
+Console.WriteLine("Welcome to a game about smithing weapons!");
 
 string playerName = "";
 bool isValidName = false;
@@ -35,8 +39,28 @@ Console.WriteLine(@"Which weapon do you want to smith?
     4. Flail
     ");
 
-    
+    string answer2 = Console.ReadLine() ?? string.Empty;
 
+while(true)
+{
+    
+    if(answer2 == "1")
+    {
+        Console.WriteLine("Ok, you've chosen the Longsword! Time to get smithing!");
+        Console.WriteLine("Press Enter to start smithing");
+
+        Console.ReadLine();
+        Console.Clear();
+        
+        Console.WriteLine($"");
+
+    }
+
+
+
+
+
+}
 
 
 
