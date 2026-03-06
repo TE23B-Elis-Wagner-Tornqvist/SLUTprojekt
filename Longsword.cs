@@ -12,6 +12,21 @@ public class Longsword : Weapon
         return sharpness;
     }
 
+    public string GetQuality()
+    {
+        return WeaponQuality;
+    }
+
+    public void Harden()
+    {
+        hardness += 1;
+    }
+
+    public int GetHardness()
+    {
+        return hardness;
+    }
+
 
     
 

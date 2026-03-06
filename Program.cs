@@ -41,30 +41,47 @@ Console.WriteLine(@"Which weapon do you want to smith?
 
     string answer2 = Console.ReadLine() ?? string.Empty;
 
-while(true)
+bool BigLoop = true;
+while(BigLoop ==true)
 {
     
     if(answer2 == "1")
     {
         Console.WriteLine("Ok, you've chosen the Longsword! Time to get smithing!");
         Console.WriteLine("Press Enter to start smithing");
-
         Console.ReadLine();
-        Console.Clear();
+        Boolean IsSmithing = true;
+
+        while(IsSmithing == true)
+        {
         
-        Console.WriteLine($"");
+        
+        Console.Clear();
 
+        longsword.Sharpen();
+        longsword.Harden();
+        Console.WriteLine($"nice one! Your sharpness is {longsword.GetSharpness()} and your hardness is {longsword.GetHardness()}");
+        Console.WriteLine("Press Enter to keep smithing or type ''stop'' to stop smithing!");
+        
+        string stopSmith = Console.ReadLine() ?? string.Empty;
+
+            if(stopSmith.ToLower() == "stop")
+                {
+                    IsSmithing = false;
+                    BigLoop = false;
+                    longsword.CheckQuality();
+                    Console.WriteLine($"Your sword got a {longsword.GetQuality()} quality!");
+                    Console.ReadLine();
+                }
+        
+        }
     }
-
-
-
-
-
 }
 
+     
+
+    
 
 
 
 
-
-Console.ReadLine();

@@ -12,3 +12,4 @@ C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\refint\SLUTprojekt.dll
 C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.pdb
 C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.genruntimeconfig.cache
 C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\ref\SLUTprojekt.dll
+C:\Programmering2\SLUTprojekt\obj\Debug\net8.0\SLUTprojekt.sourcelink.json
