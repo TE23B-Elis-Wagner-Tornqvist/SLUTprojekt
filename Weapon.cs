@@ -5,8 +5,8 @@ public class Weapon
     protected int hardness = 0;
     public List<string> quality = ["COMMON", "RARE", "EPIC", "LEGENDARY", "MYTHIC"];
     protected string WeaponQuality = "";
-    float BreakRisk = 0;
-
+    protected float BreakRisk = 0;
+   protected Boolean IsBroken = false;
 
 
 
@@ -16,7 +16,7 @@ public class Weapon
         WeaponQuality = (sharpness, hardness) switch
         {
 
-            (>= 100, >= 10) => quality[4],
+            (>= 90, >= 9) => quality[4],
             (>= 80, >= 8) => quality[3],
             (>= 50, >= 5) => quality[2],
             (>= 20, >= 2) => quality[1],
@@ -29,7 +29,15 @@ public class Weapon
     public void BreakCheck()
     {
         BreakRisk = ((float) sharpness / 100f + (float) hardness / 10f) * 50f;
-        
+
+        float roll = Random.Shared.Next(0, 100);
+
+        if(roll < BreakRisk)
+        {
+            Console.WriteLine("Oh no, your sword broke!");
+            IsBroken = true;
+        }
+
     }
 
 

@@ -60,7 +60,14 @@ while(BigLoop ==true)
 
         longsword.Sharpen();
         longsword.Harden();
+        longsword.BreakCheck();
+            if(longsword.GetBroken() == true)
+            {
+                IsSmithing = false;
+                BigLoop = false;
+            }
         Console.WriteLine($"nice one! Your sharpness is {longsword.GetSharpness()} and your hardness is {longsword.GetHardness()}");
+        Console.WriteLine($"CAREFUL, the longswords risk of failing is at {longsword.GetBreakRisk()}%.");
         Console.WriteLine("Press Enter to keep smithing or type ''stop'' to stop smithing!");
         
         string stopSmith = Console.ReadLine() ?? string.Empty;

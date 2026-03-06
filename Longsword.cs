@@ -27,6 +27,16 @@ public class Longsword : Weapon
         return hardness;
     }
 
+    public bool GetBroken()
+    {
+        return IsBroken;
+    }
+
+    public float GetBreakRisk()
+    {
+        return BreakRisk;
+    }
+
 
     
 
