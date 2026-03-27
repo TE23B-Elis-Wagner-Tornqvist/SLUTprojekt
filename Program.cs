@@ -1,6 +1,6 @@
 ﻿Longsword longsword = new Longsword();
 Scythe scythe = new Scythe();
-Flail flail = new Flail();
+Flail flail = new Flail();        //Instans av alla vapen
 Axe axe = new Axe();
 
 Console.WriteLine("Welcome to a game about smithing weapons!");
@@ -14,13 +14,13 @@ while (!isValidName)
     Console.Write("What is your name? ");
     string answer = Console.ReadLine() ?? string.Empty;
     
-    // Try to parse the input as a number
+    
     if (int.TryParse(answer, out numberCheck))
-    {
+    {                                                                   // kolla ifall det är nummer
         Console.WriteLine("Invalid name! Please don't enter numbers.");
     }
     else if (answer != "")
-    {
+    {                              //Kolla ifall det är tomt och annars får man gå vidare och får ett namn
         playerName = answer;
         isValidName = true;
     }
@@ -51,11 +51,11 @@ Console.WriteLine(@"Which weapon do you want to smith?
     if(answer2 == "2")
 {
     Weapon.SmithWeapon(scythe);
-}
+}                                                          //Använder metoden i weapon.cs och sätter i det vapen som ska smidas
 
     if(answer2 == "3")
 {
-    Weapon.SmithWeapon(axe);
+    Weapon.SmithWeapon(axe); 
 }
 
     if(answer2 == "4")
