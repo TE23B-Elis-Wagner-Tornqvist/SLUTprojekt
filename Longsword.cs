@@ -1,44 +1,11 @@
 public class Longsword : Weapon
 {
 
-
-    public void Sharpen()
+    public Longsword()
     {
-        sharpness += 10;
+        sharpenIncrease = 10;
+        hardenIncrease = 1;
     }
-
-    public int GetSharpness()
-    {
-        return sharpness;
-    }
-
-    public string GetQuality()
-    {
-        return WeaponQuality;
-    }
-
-    public void Harden()
-    {
-        hardness += 1;
-    }
-
-    public int GetHardness()
-    {
-        return hardness;
-    }
-
-    public bool GetBroken()
-    {
-        return IsBroken;
-    }
-
-    public float GetBreakRisk()
-    {
-        return BreakRisk;
-    }
-
-
-    
 
 
 }

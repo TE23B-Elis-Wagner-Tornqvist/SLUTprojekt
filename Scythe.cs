@@ -1,28 +1,11 @@
 public class Scythe : Weapon
 {
 
-    public void SharpenScythe()
+    public Scythe()
     {
-        sharpness += 5;
+        sharpenIncrease = 5;
+        hardenIncrease = 2;
     }
-
-    public int GetSharpnessSchythe()
-    {
-        return sharpness;
-    }
-
-    public void HardenScythe()
-    {
-        hardness += 2;
-    }
-
-    public int GetHardnessSchythe()
-    {
-        return hardness;
-    }
-
-
-
 
 
 }

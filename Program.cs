@@ -1,6 +1,7 @@
 ﻿Longsword longsword = new Longsword();
-
-
+Scythe scythe = new Scythe();
+Flail flail = new Flail();
+Axe axe = new Axe();
 
 Console.WriteLine("Welcome to a game about smithing weapons!");
 
@@ -41,50 +42,26 @@ Console.WriteLine(@"Which weapon do you want to smith?
 
     string answer2 = Console.ReadLine() ?? string.Empty;
 
-bool BigLoop = true;
-while(BigLoop ==true)
-{
-    
+
     if(answer2 == "1")
-    {
-        Console.WriteLine("Ok, you've chosen the Longsword! Time to get smithing!");
-        Console.WriteLine("Press Enter to start smithing");
-        Console.ReadLine();
-        Boolean IsSmithing = true;
-
-        while(IsSmithing == true)
-        {
-        
-        
-        Console.Clear();
-
-        longsword.Sharpen();
-        longsword.Harden();
-        longsword.BreakCheck();
-            if(longsword.GetBroken() == true)
-            {
-                IsSmithing = false;
-                BigLoop = false;
-            }
-        Console.WriteLine($"nice one! Your sharpness is {longsword.GetSharpness()} and your hardness is {longsword.GetHardness()}");
-        Console.WriteLine($"CAREFUL, the longswords risk of failing is at {longsword.GetBreakRisk()}%.");
-        Console.WriteLine("Press Enter to keep smithing or type ''stop'' to stop smithing!");
-        
-        string stopSmith = Console.ReadLine() ?? string.Empty;
-
-            if(stopSmith.ToLower() == "stop")
-                {
-                    IsSmithing = false;
-                    BigLoop = false;
-                    longsword.CheckQuality();
-                    Console.WriteLine($"Your sword got a {longsword.GetQuality()} quality!");
-                    Console.ReadLine();
-                }
-        
-        }
-    }
+{
+    Weapon.SmithWeapon(longsword);
 }
 
+    if(answer2 == "2")
+{
+    Weapon.SmithWeapon(scythe);
+}
+
+    if(answer2 == "3")
+{
+    Weapon.SmithWeapon(axe);
+}
+
+    if(answer2 == "4")
+{
+    Weapon.SmithWeapon(flail);
+}
      
 
     
