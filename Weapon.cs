@@ -70,13 +70,13 @@ public class Weapon
 
     public void BreakCheck()
     {
-        BreakRisk = ((float)sharpness / 100f + (float)hardness / 10f) * 50f;
+        BreakRisk = ((float)sharpness / 100f + (float)hardness / 10f) * 10f;
 
         float roll = Random.Shared.Next(0, 100);
                                                                // Tar värdet från sharpness och hardness och delar det för bättre värden
         if (roll < BreakRisk)                                
-        {                                                      // * 50 på båda för att nummer mellan 0 - 100.
-            Console.WriteLine("Oh no, your sword broke!");      // om roll är mindre än numret ( i detta exempel 20 så misslyckas det) 20 är alltså 20% risk att misslyckas
+        {                                                      // * 10 på båda för att få ett nummer som går hand i hand med "roll" variabeln.
+            Console.WriteLine("Oh no, your weapon broke!");      // om roll är mindre än numret ( i detta exempel 20 så misslyckas det) 20 är alltså 20% risk att misslyckas
             IsBroken = true;
         }
 

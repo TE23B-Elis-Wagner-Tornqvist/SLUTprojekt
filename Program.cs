@@ -42,6 +42,25 @@ Console.WriteLine(@"Which weapon do you want to smith?
 
     string answer2 = Console.ReadLine() ?? string.Empty;
 
+    bool IsValidWeapon = false;
+    string WeaponChoice = "";
+
+    while(!IsValidWeapon)
+{
+    
+    if(answer2 == "")
+    {
+        Console.WriteLine("Not a weapon, please choose a weapon!");
+    }
+
+    else
+    {
+        WeaponChoice = answer2;
+        IsValidWeapon = true;
+    }
+
+
+}
 
     if(answer2 == "1")
 {
