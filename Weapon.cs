@@ -1,3 +1,6 @@
+using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
+
 public class Weapon
 {
 
@@ -8,8 +11,18 @@ public class Weapon
     protected float BreakRisk = 0;
     protected Boolean IsBroken = false;
 
-    protected int sharpenIncrease;       //en variabrl för så att varje vapen kan ha sitt egna värde
+    public int CommonDamage = Random.Shared.Next(0, 10);
+    public int RareDamage = Random.Shared.Next(100, 350);
+    public int EpicDamage = Random.Shared.Next(500, 1000);
+    public int LegendaryDamage = Random.Shared.Next(1000, 5000);
+    public int MythicDamage = Random.Shared.Next(10000, 50000);
 
+
+    public int WeaponDamage;
+    public int DummyHP = 1000000;
+
+
+    protected int sharpenIncrease;       //en variabrl för så att varje vapen kan ha sitt egna värde
     protected int hardenIncrease;
 
     public int GetSharpness()
@@ -124,11 +137,15 @@ public class Weapon
 
             if (stopSmith.ToLower() == "stop")
             {
+                Console.Clear();
                 IsSmithing = false;
                 BigLoop = false; 
                 w.CheckQuality();                                                //kollar kvaliteten och ger ett resultat
                 Console.WriteLine($"Your {w} got a {w.GetQuality()} quality!");
+                Console.Write($"Now you'll be able to try your new {w} against the dummy! (just press enter)");
                 Console.ReadLine();
+                Console.Clear();
+                TestDamage(w);
             }
 
         }
@@ -136,5 +153,72 @@ public class Weapon
 
     }
 
+
+    public static void DamageChooser(Weapon w)
+    {
+        if(w.WeaponQuality == w.quality[0])
+        {
+            w.WeaponDamage = w.CommonDamage;
+        }
+
+
+        if(w.WeaponQuality == w.quality[1])
+        {
+            w.WeaponDamage = w.RareDamage;
+        }
+
+
+        if(w.WeaponQuality == w.quality[2])
+        {
+            w.WeaponDamage = w.EpicDamage;
+        }
+
+
+        if(w.WeaponQuality == w.quality[3])
+        {
+            w.WeaponDamage = w.LegendaryDamage;
+        }
+
+
+        if(w.WeaponQuality == w.quality[4])
+        {
+            w.WeaponDamage = w.MythicDamage;
+        }
+    }
+
+
+    public static void TestDamage(Weapon w)
+    {
+
+
+
+        DamageChooser(w);
+
+        while(true)
+        {
+            
+        
+
+        Console.WriteLine(@$"
+        
+        Dummy HP = {w.DummyHP}
+        {w} dmage = {w.WeaponDamage}
+
+        you did {w.WeaponDamage} damage to the dummy
+
+        ");
+
+         w.DummyHP -= w.WeaponDamage;
+
+        Console.WriteLine($"Dummy has: {w.DummyHP} HP Left, press 'enter' to keep dealing damage");
+
+
+
+        Console.ReadLine();
+        Console.Clear();
+
+        }
+
+    }
 
 }
