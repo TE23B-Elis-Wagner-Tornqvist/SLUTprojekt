@@ -40,27 +40,25 @@ Console.WriteLine(@"Which weapon do you want to smith?
     4. Flail
     ");
 
-    string answer2 = Console.ReadLine() ?? string.Empty;
 
+   
     bool IsValidWeapon = false;
-    string WeaponChoice = "";
+    int numbCheck;
 
     while(!IsValidWeapon)
 {
-    
-    if(answer2 == "")
+
+    string answer2 = Console.ReadLine() ?? string.Empty;
+    if(answer2 == "" || !int.TryParse(answer2, out numbCheck))
     {
-        Console.WriteLine("Not a weapon, please choose a weapon!");
+        Console.WriteLine("Please choose a weapon by typing the correlated number!");
     }
 
     else
     {
-        WeaponChoice = answer2;
+       
         IsValidWeapon = true;
-    }
 
-
-}
 
     if(answer2 == "1")
 {
@@ -80,6 +78,12 @@ Console.WriteLine(@"Which weapon do you want to smith?
     if(answer2 == "4")
 {
     Weapon.SmithWeapon(flail);
+}
+     
+
+    }
+
+
 }
      
 
