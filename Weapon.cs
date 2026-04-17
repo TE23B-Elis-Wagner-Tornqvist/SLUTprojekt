@@ -166,7 +166,7 @@ public class Weapon
         {
             w.WeaponDamage = w.RareDamage;
         }
-
+                                                       // If sats för att bestämma hur mycket damage vapnet ska få utåfrin olika kavilitet
 
         if(w.WeaponQuality == w.quality[2])
         {
@@ -212,7 +212,10 @@ public class Weapon
 
         Console.WriteLine($"Dummy has: {w.DummyHP} HP Left, press 'enter' to keep dealing damage");
 
-
+        if(w.DummyHP <= 0)
+            {
+                Console.WriteLine("Nice One! You killed the dummy :P");
+            }
 
         Console.ReadLine();
         Console.Clear();
