@@ -202,7 +202,7 @@ public class Weapon
         Console.WriteLine(@$"
         
         Dummy HP = {w.DummyHP}
-        {w} dmage = {w.WeaponDamage}
+        {w.WeaponQuality} {w} damage = {w.WeaponDamage}
 
         you did {w.WeaponDamage} damage to the dummy
 
