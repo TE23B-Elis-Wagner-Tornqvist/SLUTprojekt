@@ -18,22 +18,22 @@ while (!isValidName)
     Console.Write("What is your name? ");
     string answer = Console.ReadLine() ?? string.Empty;
     
-    // kolla ifall det är nummer, -nummer är inte tillåtet
-    if (int.TryParse(answer, out numberCheck))
-    {                                                                   
-        Console.WriteLine("Invalid name! Please don't enter numbers.");
-    }
-    //Kolla ifall svaret inte är tomt, om det är giltigt så sparas namnet oh loopen avslutas
-    else if (answer != "")
-    {                              
-        playerName = answer;
-        isValidName = true;
-    }
-    //Om svaret är tomt får spelaren en meddelande om att förska igen ochskriva ett namn
-    else
-    {
-        Console.WriteLine("Invalid name! Please enter a name.");
-    }
+        // kolla ifall det är nummer, -nummer är inte tillåtet
+        if (int.TryParse(answer, out numberCheck))
+        {                                                                   
+            Console.WriteLine("Invalid name! Please don't enter numbers.");
+        }
+            //Kolla ifall svaret inte är tomt, om det är giltigt så sparas namnet oh loopen avslutas
+            else if (answer != "")
+            {                              
+                playerName = answer;
+                isValidName = true;
+            }
+                //Om svaret är tomt får spelaren en meddelande om att förska igen ochskriva ett namn
+                else
+                {
+                    Console.WriteLine("Invalid name! Please enter a name.");
+                }
 }
 
 //välkommst medelande med spelarens namn
@@ -58,42 +58,38 @@ Console.WriteLine(@"Which weapon do you want to smith?
 
     string answer2 = Console.ReadLine() ?? string.Empty;
 
-    //Kollar så att det inte är tomt samt är ett nummer 
-    if(answer2 == "" || !int.TryParse(answer2, out numbCheck))
-    {
-        Console.WriteLine("Please choose a weapon by typing the correlated number!");
-    }
+        //Kollar så att det inte är tomt samt är ett nummer 
+        if(answer2 == "" || !int.TryParse(answer2, out numbCheck))
+        {
+            Console.WriteLine("Please choose a weapon by typing the correlated number!");
+        }
 
-    else
-    {
-       //Gör valet giltigt och avslutar loopen
-        IsValidWeapon = true;
+            else
+            {
+                //Gör valet giltigt och avslutar loopen
+                IsValidWeapon = true;
 
-//Anropar smithWeapon metoden med det valda vapnet
-    if(answer2 == "1")
-{
-    Weapon.SmithWeapon(longsword);
-}
+                //Anropar smithWeapon metoden med det valda vapnet
+                if(answer2 == "1")
+                {
+                    longsword.SmithWeapon();
+                }
 
-    if(answer2 == "2")
-{
-    Weapon.SmithWeapon(scythe);
-}                                                          //Använder metoden i weapon.cs och sätter i det vapen som ska smidas
+                if(answer2 == "2")
+                {
+                    scythe.SmithWeapon();
+                }                                                          //Använder metoden i weapon.cs och sätter i det vapen som ska smidas
 
-    if(answer2 == "3")
-{
-    Weapon.SmithWeapon(axe); 
-}
+                if(answer2 == "3")
+                {
+                    axe.SmithWeapon(); 
+                }
 
-    if(answer2 == "4")
-{
-    Weapon.SmithWeapon(flail);
-}
-     
-
-    }
-
-
+                if(answer2 == "4")
+                {
+                    flail.SmithWeapon();
+                }
+            }
 }
      
 

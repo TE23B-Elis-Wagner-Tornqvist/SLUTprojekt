@@ -1,4 +1,5 @@
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 public class Weapon
@@ -74,7 +75,7 @@ public class Weapon
         {
 
             ( >= 90, >= 9) => quality[4],
-            ( >= 80, >= 8) => quality[3],                    //En switch för att kolla om sharpness och hardness har vissa värden
+            ( >= 80, >= 8) => quality[3],                   
             ( >= 50, >= 5) => quality[2],                    // Ifall dem har vissa ämnen får dem en viss kvalitet från "quality" listan
             ( >= 20, >= 2) => quality[1],
             _ => quality[0],
@@ -99,144 +100,141 @@ public class Weapon
     }
 
 
-
-
-
     //Denna metod hanterar hela smithing processen för ett specifikt vapen som spelaren har valt
-    public static void SmithWeapon(Weapon w)              
-    {                                                      
-
-        bool BigLoop = true;
-        //En yttre loop
-        while(BigLoop == true)
-{
-
-        Console.WriteLine($"Ok, you've chosen the {w}! Time to get smithing!");
+    public void SmithWeapon()              
+    {                                                          
+        Console.WriteLine($"Ok, you've chosen the {this}! Time to get smithing!");
         Console.WriteLine("Press Enter to start smithing");
         Console.ReadLine();
-        Boolean IsSmithing = true;
-
-        //inre loop som tar hand om smithing processen
-        while (IsSmithing == true)
-        {
-
-
-            Console.Clear();
-
-            //Utför smithing processen samt kollar om vapnet har gått sönder
-            w.Sharpen();
-            w.Harden();
-            w.BreakCheck();
-
-            //Avslutar både yttre samt inre loopen om vapnet gått sönder
-            if (w.GetBroken() == true)
-            {
-                IsSmithing = false;     
-                BigLoop = false;
-                Console.ReadLine();
-                break;
-            }
-
-            //Visay nuvarnde status på vapnet (skärpa och hårdhet) samt frågar om spelaren vill sluta eller fortsätta
-            Console.WriteLine($"nice one! Your sharpness is {w.GetSharpness()} and your hardness is {w.GetHardness()}");
-            Console.WriteLine($"CAREFUL, the {w}'s risk of failing is at {w.GetBreakRisk()}%.");
-            Console.WriteLine("Press Enter to keep smithing or type ''stop'' to stop smithing!");
-
-            string stopSmith = Console.ReadLine() ?? string.Empty;
-
-            //Ifall spelaren vill avsluta genom att skriva stop så avlutas smithing proccess och spelarens vapen får en viss kvalitet
-            if (stopSmith.ToLower() == "stop")
-            {
-                Console.Clear();
-                IsSmithing = false;
-                BigLoop = false; 
-                w.CheckQuality();                                               
-                Console.WriteLine($"Your {w} got a {w.GetQuality()} quality!");
-                Console.Write($"Now you'll be able to try your new {w} against the dummy! (just press enter)");
-                Console.ReadLine();
-                Console.Clear();
-                TestDamage(w);
-            }
-
-        }
+        RunSmithingLoop();
     }
 
-    }
+        public void RunSmithingLoop()
+    {
+            bool isSmithing = true;
+
+            //inre loop som tar hand om smithing processen
+            while (isSmithing)
+            {
+                Console.Clear();
+
+                //Utför smithing processen samt kollar om vapnet har gått sönder
+                Sharpen();
+                Harden();
+                BreakCheck();
+
+                //Avslutar både yttre samt inre loopen om vapnet gått sönder
+                if (GetBroken())
+                {
+                    Console.ReadLine();
+                    break;
+                }
+
+                //Visay nuvarnde status på vapnet (skärpa och hårdhet) samt frågar om spelaren vill sluta eller fortsätta
+                Console.WriteLine($"nice one! Your sharpness is {GetSharpness()} and your hardness is {GetHardness()}");
+                Console.WriteLine($"CAREFUL, the {this}'s risk of failing is at {GetBreakRisk()}%.");
+                Console.WriteLine("Press Enter to keep smithing or type ''stop'' to stop smithing!");
+            
+
+                string stopSmith = Console.ReadLine() ?? string.Empty;
+
+                //Ifall spelaren vill avsluta genom att skriva stop så avlutas smithing proccess och spelarens vapen får en viss kvalitet
+                if (stopSmith.ToLower() == "stop")
+                {
+                   isSmithing = false;
+                   ShowResult();
+                }
+            }   
+    }      
+        
+
+public void ShowResult()
+{
+    Console.Clear();
+    CheckQuality();                                               
+    Console.WriteLine($"Your {this} got a {GetQuality()} quality!");
+    Console.Write($"Now you'll be able to try your new {this} against the dummy! (just press enter)");
+    Console.ReadLine();
+    Console.Clear();
+    TestDamage();    
+}
+
 
 
     //Tilldelar rätt skada värde baserat på kvaliteten av vapnet
-    public static void DamageChooser(Weapon w)
+    public void DamageChooser()
     {
-        if(w.WeaponQuality == w.quality[0])
+        if(WeaponQuality == quality[0])
         {
-            w.WeaponDamage = w.CommonDamage;
+            WeaponDamage = CommonDamage;
         }
 
 
-        if(w.WeaponQuality == w.quality[1])
+        if(WeaponQuality == quality[1])
         {
-            w.WeaponDamage = w.RareDamage;
+            WeaponDamage = RareDamage;
         }
                                                        
 
-        if(w.WeaponQuality == w.quality[2])
+        if(WeaponQuality == quality[2])
         {
-            w.WeaponDamage = w.EpicDamage;
+            WeaponDamage = EpicDamage;
         }
 
 
-        if(w.WeaponQuality == w.quality[3])
+        if(WeaponQuality == quality[3])
         {
-            w.WeaponDamage = w.LegendaryDamage;
+            WeaponDamage = LegendaryDamage;
         }
 
 
-        if(w.WeaponQuality == w.quality[4])
+        if(WeaponQuality == quality[4])
         {
-            w.WeaponDamage = w.MythicDamage;
+            WeaponDamage = MythicDamage;
         }
     }
 
 
     //testar skadan på vapnet mot en dummy tills den är död
-    public static void TestDamage(Weapon w)
+    public void TestDamage()
     {
 
 
         //Bestämmer skadan baserat på kavliteten 
-        DamageChooser(w);
+        DamageChooser();
 
         //loop tills dummy död
         while(true)
         {
             
+
+            Console.WriteLine(@$"
         
+            Dummy HP = {DummyHP}
+            {WeaponQuality} {this} damage = {WeaponDamage}
 
-        Console.WriteLine(@$"
+            you did {WeaponDamage} damage to the dummy
+
+            ");
         
-        Dummy HP = {w.DummyHP}
-        {w.WeaponQuality} {w} damage = {w.WeaponDamage}
+            //drar av vapnets skada från dummy HP
+             DummyHP -= WeaponDamage;
 
-        you did {w.WeaponDamage} damage to the dummy
+            Console.WriteLine($"Dummy has: {DummyHP} HP Left, press 'enter' to keep dealing damage");
 
-        ");
-        
-        //drar av vapnets skada från dummy HP
-         w.DummyHP -= w.WeaponDamage;
-
-        Console.WriteLine($"Dummy has: {w.DummyHP} HP Left, press 'enter' to keep dealing damage");
-
-        //Meddelar när spelaren dödat dummy
-        if(w.DummyHP <= 0)
+            //Meddelar när spelaren dödat dummy
+            if(DummyHP <= 0)
             {
                 Console.WriteLine("Nice One! You killed the dummy :P");
             }
 
-        Console.ReadLine();
-        Console.Clear();
+            Console.ReadLine();
+            Console.Clear();
 
         }
 
     }
 
 }
+
+
